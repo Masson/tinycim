@@ -1,0 +1,6 @@
+[submodule "cli/src/argparse"]
+	path = cli/src/argparse
+	url = https://github.com/cofyc/argparse.git
+[submodule "libtinycim/src/libuv"]
+	path = libtinycim/src/libuv
+	url = https://github.com/libuv/libuv.git
