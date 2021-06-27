@@ -1,10 +1,9 @@
-//
-// Created by Ethan Mark on 2021/6/22.
-//
+// Copyright (c) 2021. coconutmilk.io
+// Create by Ethan Ma <masson.teng@gmail.com>
 
 #ifndef TINYCIM_IMCLIENT_H
 #define TINYCIM_IMCLIENT_H
 
-void sayHello();
+void say_hello();
 
 #endif //TINYCIM_IMCLIENT_H

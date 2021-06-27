@@ -10,7 +10,10 @@ set(THIRD_PARTY_LIBS ${THIRD_PARTY_LIBS} argparse)
 
 # source set
 set(SOURCES
-        src/main.c)
+        src/main.c
+        src/cliparse.c
+        src/client.c
+        src/server.c)
 
 # executable
 add_executable(${PROJECT_NAME} ${SOURCES})

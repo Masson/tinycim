@@ -31,6 +31,7 @@ typedef enum cliparse_result cmd_listener (struct cliparse *self,
 
 /**
  * Cliparse is tool to parse user's input repeatedly on each line.
+ * Inspire by `argpasre`(https://github.com/cofyc/argparse).
  */
 struct cliparse {
     const char *welcome_text;

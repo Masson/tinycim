@@ -1,9 +1,14 @@
+// Copyright (c) 2021. coconutmilk.io
+// Create by Ethan Ma <masson.teng@gmail.com>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #include "argparse.h"
 #include "imclient.h"
+#include "client.h"
+#include "server.h"
 
 
 static const char *const usage[] = {
@@ -22,10 +27,25 @@ static const char* translateModeToString(int mode) {
     return mode == CLIENT_MODE ? "client mode" : "server mode";
 }
 
-void
-printOptions(struct tinycim_options *options);
+void parseCliOption(int argc, char *const *argv);
+void printOptions(struct tinycim_options *options);
+
 
 int main(int argc, char *argv[]) {
+    say_hello();
+    parseCliOption(argc, argv);
+
+    int result;
+    if (cli_options.mode == CLIENT_MODE) {
+        result = enter_client_mode();
+    } else {  // cli_options.mode == SERVER_MODE
+        result = enter_server_mode();
+    }
+
+    exit(result);
+}
+
+void parseCliOption(int argc, char *const *argv) {
     int isClientMode = 0;
     int isServerMode = 0;
     struct argparse_option options[] = {
@@ -43,7 +63,7 @@ int main(int argc, char *argv[]) {
     argparse_describe(&argparser,
                       "Coconutmilk's Tiny IM",
                       "Writen in CLang with Love.");
-    argc = argparse_parse(&argparser, argc, argv);
+    argparse_parse(&argparser, argc, (const char **) argv);
 
     if (isClientMode != 0) {
         cli_options.mode = CLIENT_MODE;
@@ -52,8 +72,6 @@ int main(int argc, char *argv[]) {
     }
 
     printOptions(&cli_options);
-    sayHello();
-    exit(EXIT_SUCCESS);
 }
 
 void printOptions(struct tinycim_options *options) {

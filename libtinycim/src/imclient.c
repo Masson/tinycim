@@ -1,6 +1,6 @@
-//
-// Created by Ethan Mark on 2021/6/22.
-//
+// Copyright (c) 2021. coconutmilk.io
+// Create by Ethan Ma <masson.teng@gmail.com>
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,7 +8,7 @@
 #include "uv.h"
 
 void
-sayHello() {
+say_hello() {
     printf("Hello, World!\n");
 
     uv_loop_t *loop = malloc(sizeof(uv_loop_t));
